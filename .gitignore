@@ -1,0 +1,6 @@
+/vendor
+/node_modules
+.env
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+.idea
