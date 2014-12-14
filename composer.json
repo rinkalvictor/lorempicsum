@@ -12,6 +12,7 @@
 		"barryvdh/laravel-debugbar": "1.8.*@dev",
 		"intervention/image": "~2",
 		"intervention/imagecache": "dev-master",
+		"fzaninotto/faker": "v1.4.0",
 		"sirsquall/buzz": "v0.12"
 	},
 	"require-dev": {

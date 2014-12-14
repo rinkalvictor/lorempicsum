@@ -16,12 +16,14 @@ class CreatePicturesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('url');
-			$table->string('large_url');
-			$table->integer('source_id');
-			$table->string('copyright', 20);
-			$table->string('site', 20);
-			$table->integer('width');
-			$table->integer('height');
+			$table->string('large_url')->nullable();
+			$table->integer('source_id')->nullable();
+			$table->string('copyright', 20)->nullable();
+			$table->string('site', 20)->nullable();
+			$table->integer('width')->nullable();
+			$table->integer('height')->nullable();
+			$table->boolean('downloaded')->default(0);
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}
