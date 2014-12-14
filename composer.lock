@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "32d1ec88ccc4956bb418e64ef60bbcbf",
+    "hash": "9d018ff375a3afa2ab276305161fdcf6",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "d2e7e2675dc7f7219438bc2ac85bf22c7dd601c6"
+                "reference": "e4daec31dc4534c9ac4a860b73ee3905ba61e13a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/d2e7e2675dc7f7219438bc2ac85bf22c7dd601c6",
-                "reference": "d2e7e2675dc7f7219438bc2ac85bf22c7dd601c6",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/e4daec31dc4534c9ac4a860b73ee3905ba61e13a",
+                "reference": "e4daec31dc4534c9ac4a860b73ee3905ba61e13a",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2014-12-04 14:54:55"
+            "time": "2014-12-13 21:05:36"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1449,6 +1449,54 @@
             "time": "2014-01-18 15:33:09"
         },
         {
+            "name": "sirsquall/buzz",
+            "version": "v0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sirsquall/Buzz.git",
+                "reference": "6b038fd6277b24e699868a21bf184f7598fa79f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sirsquall/Buzz/zipball/6b038fd6277b24e699868a21bf184f7598fa79f0",
+                "reference": "6b038fd6277b24e699868a21bf184f7598fa79f0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ],
+            "time": "2014-06-11 14:32:30"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "dev-master",
             "source": {
@@ -2276,46 +2324,6 @@
             ],
             "description": "Rapidly generate resources, migrations, models, and much more.",
             "time": "2014-10-01 04:00:00"
-        },
-        {
-            "name": "yangqi/htmldom",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yangqi/Htmldom.git",
-                "reference": "9abebd93f657a650b4e221a0bef0dc730d81fee5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yangqi/Htmldom/zipball/9abebd93f657a650b4e221a0bef0dc730d81fee5",
-                "reference": "9abebd93f657a650b4e221a0bef0dc730d81fee5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Yangqi\\Htmldom": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "yangqi",
-                    "email": "i@yangqi.me"
-                }
-            ],
-            "description": "Simple Html Dom Parser for Laravel 4",
-            "keywords": [
-                "HTML Parser",
-                "laravel"
-            ],
-            "time": "2014-10-06 19:08:02"
         }
     ],
     "packages-dev": [
@@ -3227,8 +3235,7 @@
         "illuminate/html": 20,
         "laravel/socialite": 20,
         "barryvdh/laravel-debugbar": 20,
-        "intervention/imagecache": 20,
-        "yangqi/htmldom": 20
+        "intervention/imagecache": 20
     },
     "prefer-stable": false,
     "platform": [],

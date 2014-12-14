@@ -144,7 +144,7 @@
 			'Way\Generators\GeneratorsServiceProvider',
 			'Barryvdh\Debugbar\ServiceProvider',
 			'Intervention\Image\ImageServiceProvider',
-			'Yangqi\Htmldom\HtmldomServiceProvider',
+			'Buzz\BuzzServiceProvider',
 
 		],
 
@@ -207,8 +207,7 @@
 			'HTML'      => 'Illuminate\Html\HtmlFacade',
 			'Debugbar'  => 'Barryvdh\Debugbar\Facade',
 			'Image'     => 'Intervention\Image\Facades\Image',
-			'Htmldom'   => 'Yangqi\Htmldom\Htmldom',
-
+			'Buzz'      => 'Buzz\Buzz',
 		],
 
 	];

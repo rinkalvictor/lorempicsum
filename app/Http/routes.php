@@ -42,3 +42,17 @@ Route::controllers([
 		return Response::make($img,200,array('Content-Type'=>'image/jpeg'));
 
 	})->where(['width' => '[0-9]+', 'height' => '[0-9]+']);
+
+	Route::get('/downloadpics',function(){
+
+		$base_url      = 'http://www.splashbase.co/api/v1/images/';
+		foreach (range(1, 5) as $number) {
+			$response = Buzz::get($base_url.$number);
+			$responseArr = json_decode($response->getContent());
+			echo '<pre>';
+			print_r($responseArr);
+			echo '</pre>';
+			//copy($responseArr->large_url, public_path().'/images/unsplash/'.$number.'.jpeg');
+			//echo '<br/>'.$responseArr->url.'<br/>';
+		}
+	});
