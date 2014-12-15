@@ -31,7 +31,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-use \App\Picture;
 
 	Route::get('/test/{width?}/{height?}', function($width = 300, $height = 200)
 	{
@@ -43,31 +42,3 @@ use \App\Picture;
 
 	})->where(['width' => '[0-9]+', 'height' => '[0-9]+']);
 
-	Route::get('/downloadpics',function(){
-		$base_url      = 'http://www.splashbase.co/api/v1/images/';
-		foreach (range(1, 3) as $number) {
-			$response = Buzz::get($base_url.$number);
-			$responseArr = json_decode($response->getContent());
-//			echo '<pre>';
-//			print_r($responseArr);
-//			echo '</pre>';
-			if($responseArr->large_url!="")
-				$imageUrl = $responseArr->large_url;
-			else
-				$imageUrl = $responseArr->url;
-			if (!File::exists(public_path().'/images/'.$responseArr->site))
-			{
-				File::makeDirectory(public_path().'/images/'.$responseArr->site, 0775);
-			}
-			if (!File::exists(public_path().'/images/unsplash/'.$number.'.jpeg'))
-			{
-				copy($imageUrl, public_path().'/images/unsplash/'.$number.'.jpeg');
-			}
-			$width = Image::make(public_path().'/images/unsplash/'.$number.'.jpeg')->width();
-			$height = Image::make(public_path().'/images/unsplash/'.$number.'.jpeg')->height();
-			echo $width.'X'.$height.'<br/>';
-			//copy($responseArr->large_url, public_path().'/images/unsplash/'.$number.'.jpeg');
-			if(isset($responseArr->message))
-				echo '<br/>'.$responseArr->message.'<br/>';
-		}
-	});
