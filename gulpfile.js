@@ -22,6 +22,14 @@ elixir(function(mix) {
             'public/js/vendor/bootstrap.js'
         )
        .publish(
+              'underscore/underscore-min.js',
+              'public/js/vendor/underscore.js'
+        )
+       .publish(
+              'backbone/backbone.js',
+              'public/js/vendor/backbone.js'
+        )
+       .publish(
             'font-awesome/css/font-awesome.min.css',
             'public/css/vendor/font-awesome.css'
         )
