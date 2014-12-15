@@ -34,6 +34,10 @@ elixir(function(mix) {
             'public/css/vendor/font-awesome.css'
         )
        .publish(
+              'bootstrap-sass-official/assets/fonts',
+              'public/fonts'
+        )
+       .publish(
             'font-awesome/fonts',
             'public/css/fonts'
         );
