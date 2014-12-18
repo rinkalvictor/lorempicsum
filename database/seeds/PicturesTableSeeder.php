@@ -49,6 +49,7 @@
 					$continueStack ++;
 					if ($continueStack > 2500) {
 						echo "exiting";
+						Log::info('Exiting\n');
 						$continue = false;
 					}
 				}

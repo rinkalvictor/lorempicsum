@@ -4,6 +4,8 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use App\Picture;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 
 class ImageDownloadCommand extends Command {
 
@@ -38,11 +40,35 @@ class ImageDownloadCommand extends Command {
 	 */
 	public function fire()
 	{
-		$pictures = Picture::all(array('id','large_url','site'))->where('downloaded_locally',0);
+		$downloadedPictures = array_flatten(Picture::all(array('id','downloaded_locally'))->where('downloaded_locally',1)->lists('id'));
+
+		$pictures = Picture::all(array('id','large_url','site','downloaded_locally'))->where('downloaded_locally',0);
+
+		$downloaded = $downloadedPictures;
+		$logFile = 'log-picturesDownloaded.txt';
+		Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 		foreach($pictures as $picture){
-			$filename = public_path().'/images/'.$picture->site.'/'.$picture->id.'.jpg';
-			file_put_contents($filename,file_get_contents($picture->large_url));
-			$filename = null;
+			try{
+				$filename = public_path().'/images/'.$picture->site.'/'.$picture->id.'.jpg';
+				if (!File::exists($filename)){
+					echo $picture->id;
+					file_put_contents($filename,file_get_contents($picture->large_url));
+					echo 'Downloaded'.PHP_EOL;
+					$downloaded[]= $picture->id;
+					$lastDownloaded = $picture->id;
+
+
+					Log::info('Picture Downloaded::'.$picture->id,$downloaded);
+				}
+				$filename = null;
+			}catch  (Exception $e) {
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+				Log::info('Last Picture Downloaded::'.$lastDownloaded,$downloaded);
+				Picture::whereIn('id', $downloaded)->update(array('downloaded_locally' => 1));
+			}
+
 		}
+
+		Picture::whereIn('id', $downloaded)->update(array('downloaded_locally' => 1));
 	}
 }

@@ -32,6 +32,7 @@ class CreatePicturesTable extends Migration {
 			$table->integer('height')->nullable();
 			$table->boolean('downloaded_locally')->default(0);
 			$table->enum('type',array('photo','vector','illustration','icon'))->default('photo');
+			$table->enum('dimension',array('horizontal','vertical','square','na'))->default('na');
 			$table->softDeletes();
 			$table->timestamps();
 		});
