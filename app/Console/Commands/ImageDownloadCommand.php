@@ -42,7 +42,7 @@ class ImageDownloadCommand extends Command {
 	{
 		$downloadedPictures = array_flatten(Picture::all(array('id','downloaded_locally'))->where('downloaded_locally',1)->lists('id'));
 
-		$pictures = Picture::all(array('id','large_url','site','downloaded_locally'))->where('downloaded_locally',0);
+		$pictures = Picture::all(array('id','url','large_url','site','downloaded_locally'))->where('downloaded_locally',0);
 
 		$downloaded = $downloadedPictures;
 		$logFile = 'log-picturesDownloaded.txt';
@@ -50,10 +50,21 @@ class ImageDownloadCommand extends Command {
 		foreach($pictures as $picture){
 			try{
 				$filename = public_path().'/images/'.$picture->site.'/'.$picture->id.'.jpg';
+				$filename_small = public_path().'/images/'.$picture->site.'/'.$picture->id.'_small.jpg';
 				if (!File::exists($filename)){
 					echo $picture->id;
 					file_put_contents($filename,file_get_contents($picture->large_url));
 					echo 'Downloaded'.PHP_EOL;
+					$downloaded[]= $picture->id;
+					$lastDownloaded = $picture->id;
+
+
+					Log::info('Picture Downloaded::'.$picture->id,$downloaded);
+				}
+				if (!File::exists($filename_small)){
+					echo $picture->id;
+					file_put_contents($filename_small,file_get_contents($picture->url));
+					echo 'Downloaded _small'.PHP_EOL;
 					$downloaded[]= $picture->id;
 					$lastDownloaded = $picture->id;
 

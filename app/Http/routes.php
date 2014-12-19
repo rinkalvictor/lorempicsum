@@ -35,15 +35,25 @@ Route::controllers([
 
 	Route::get('/{width}/{height}/{options?}', function($width = 300, $height = 200, $options = null)
 	{
-		foreach (explode('/',$options) as $pair)
-		{
-			list ($k,$v) = explode (':',$pair);
-			$params[$k] = $v;
+		$params = array();
+		if(isset($options)){
+			foreach (explode('/',$options) as $pair)
+			{
+				list ($k,$v) = explode (':',$pair);
+				$params[$k] = $v;
+			}
 		}
 
-		$img = Image::cache(function($image) use ($width,$height,$params) {
-			$newImg = $image->make('foo.jpg')->fit($width, $height);
 
+		$img = Image::cache(function($image) use ($width,$height,$params) {
+
+			$file = 'bar.jpg';
+			if(isset($params['id']) && is_int(intval($params['id']))){
+				$picture = Picture::find($params['id']);
+				$file = 'images/'.$picture->site.'/'.$picture->id.'.jpg';
+			}
+			$newImg = $image->make($file)->fit($width, $height);
+			//echo "here";exit;
 			$newImg->interlace();
 
 			if(isset($params['grey']) && $params['grey']=='yes'){

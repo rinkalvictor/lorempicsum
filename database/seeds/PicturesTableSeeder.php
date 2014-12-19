@@ -47,7 +47,7 @@
 				} else {
 					Log::info('This path does not exist::'.$number);
 					$continueStack ++;
-					if ($continueStack > 2500) {
+					if ($continueStack > 30) {
 						echo "exiting";
 						Log::info('Exiting\n');
 						$continue = false;
