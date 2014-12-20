@@ -42,7 +42,7 @@ class ImageDownloadCommand extends Command {
 	{
 		$downloadedPictures = array_flatten(Picture::all(array('id','downloaded_locally'))->where('downloaded_locally',1)->lists('id'));
 
-		$pictures = Picture::all(array('id','url','large_url','site','downloaded_locally'))->where('downloaded_locally',0);
+		$pictures = Picture::all(array('id','url','large_url','site','downloaded_locally'))->where('downloaded_locally',1);
 
 		$downloaded = $downloadedPictures;
 		$logFile = 'log-picturesDownloaded.txt';

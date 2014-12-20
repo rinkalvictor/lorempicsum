@@ -47,13 +47,13 @@ Route::controllers([
 
 		$img = Image::cache(function($image) use ($width,$height,$params) {
 
-			$file = 'bar.jpg';
+			$file = 'foo.jpg';
 			if(isset($params['id']) && is_int(intval($params['id']))){
 				$picture = Picture::find($params['id']);
-				$file = 'images/'.$picture->site.'/'.$picture->id.'.jpg';
+				$file = 'images/'.$picture->site.'/'.$picture->id.'_small.jpg';
 			}
 			$newImg = $image->make($file)->fit($width, $height);
-			//echo "here";exit;
+
 			$newImg->interlace();
 
 			if(isset($params['grey']) && $params['grey']=='yes'){
